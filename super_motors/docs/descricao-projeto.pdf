@@ -1,0 +1,41 @@
+# Descrição do Projeto - Super-Motors
+
+## Visão Geral
+Projeto de desenvolvimento web front-end para uma oficina mecânica sustentável, focada no ODS 13 (Ação Contra a Mudança Global do Clima).
+
+## Tecnologias Utilizadas
+- HTML5
+- CSS3
+- JavaScript (opcional)
+
+## Estrutura do Projeto
+```
+projeto-oficina/
+├── index.html          # Página principal
+├── cadastro.html       # Página de cadastro
+├── css/
+│   └── style.css       # Estilos CSS
+├── img/                # Imagens da oficina
+├── icons/              # Ícones de serviços
+├── js/                 # JavaScript (opcional)
+│   └── script.js
+└── docs/               # Documentação
+    └── descricao-projeto.pdf
+```
+
+## Características
+- Design responsivo
+- Paleta de cores sustentável (verde, azul, cinza)
+- Duas fontes distintas (Roboto e Open Sans)
+- Tema ODS 13 integrado
+- Formulário de cadastro com validação
+- Links internos e externos
+- Elementos visuais ecológicos
+
+## Validação
+- Código HTML validado no W3C Validator
+- Código CSS validado no Jigsaw CSS Validator
+
+## Desenvolvido em 2025
+Projeto criado seguindo as melhores práticas de desenvolvimento web sustentável.
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Motors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/super-motors-logo.png" alt="Super Motors" id="logo">
+                <h1> Super Motors</h1>
+                <p>Oficina Sustentável</p>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#servicos">Serviços</a></li>
+                    <li><a href="../index.html#sobre">Sobre Nós</a></li>
+                    <li><a href="../index.html#agendamento">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>      
+        <section class="cadastro-section">
+            <div class="container">
+                <div class="cadastro-container">
+                    <h2>Cadastro de Cliente</h2>
+                    <p>Preencha os dados abaixo para agendar seu serviço sustentável</p>
+                    
+                    <form class="cadastro-form" action="#" method="post" onsubmit="return validarFormulario()">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone *</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="modelo">Modelo do Veículo *</label>
+                            <input type="text" id="modelo" name="modelo" required placeholder="Ex: Honda Civic 2020">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servico">Serviço Desejado *</label>
+                            <select id="servico" name="servico" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="manutencao-preventiva">Manutenção Preventiva</option>
+                                <option value="diagnostico-eletronico">Diagnóstico Eletrônico</option>
+                                <option value="troca-oleo-ecologico">Troca de Óleo Ecológico</option>
+                                <option value="revisao-completa">Revisão Completa</option>
+                                <option value="reciclagem-pecas">Reciclagem de Peças</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacoes">Observações (opcional)</label>
+                            <textarea id="observacoes" name="observacoes" rows="4" placeholder="Descreva qualquer necessidade específica ou dúvida sobre o serviço..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="aceito" name="aceito" required>
+                            <label for="aceito">Aceito receber informações sobre práticas sustentáveis e promoções *</label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-cadastrar">Cadastrar</button>
+                    </form>
+
+                    <div class="cadastro-info">
+                        <h3>🌱 Por que escolher a Super Motors?</h3>
+                        <ul>
+                            <li>Produtos 100% biodegradáveis</li>
+                            <li>Reciclagem de 95% dos resíduos</li>
+                            <li>Equipe especializada em sustentabilidade</li>
+                            <li>Preços justos e transparentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Super Motors</h3>
+                    <p>Oficina Sustentável</p>
+                    <p>Comprometidos com o meio ambiente</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@supermotors.com.br</p>
+                    <p>📍 Rua Verde, 123 - São Paulo/SP</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Super Motors. Todos os direitos reservados. | Desenvolvido com foco na sustentabilidade</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function validarFormulario() {
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const modelo = document.getElementById('modelo').value.trim();
+            const servico = document.getElementById('servico').value;
+            const aceito = document.getElementById('aceito').checked;
+
+            if (!nome || !email || !telefone || !modelo || !servico || !aceito) {
+                alert('Por favor, preencha todos os campos obrigatórios e aceite os termos.');
+                return false;
+            }
+
+            // Validação básica de email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                return false;
+            }
+
+            // Validação básica de telefone
+            const telefoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+            if (!telefoneRegex.test(telefone)) {
+                alert('Por favor, insira um telefone no formato (11) 99999-9999.');
+                return false;
+            }
+
+            // Simular envio do formulário
+            alert('Cadastro realizado com sucesso! Você será redirecionado para a página inicial.');
+            window.location.href = '../index.html';
+            return false; // Previne o envio real do formulário
+        }
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+            }
+            if (value.length >= 10) {
+                value = value.substring(0, 10) + '-' + value.substring(10, 14);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
+
