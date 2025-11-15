@@ -1,23 +1,20 @@
-/* Reset e configurações básicas */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Paleta de cores sustentável */
 :root {
-    --verde-principal: #2E7D32;      /* Verde escuro - natureza */
-    --verde-claro: #4CAF50;          /* Verde médio - crescimento */
-    --verde-suave: #81C784;          /* Verde claro - frescor */
-    --azul-sustentavel: #1976D2;     /* Azul - confiança */
-    --cinza-escuro: #424242;         /* Cinza escuro - texto */
-    --cinza-claro: #F5F5F5;          /* Cinza claro - fundo */
-    --branco: #FFFFFF;               /* Branco - limpeza */
-    --laranja-accent: #FF8F00;       /* Laranja - energia solar */
+    --verde-principal: #2E7D32;      
+    --verde-claro: #4CAF50;          
+    --verde-suave: #81C784;          
+    --azul-sustentavel: #1976D2;
+    --cinza-escuro: #424242;         
+    --cinza-claro: #F5F5F5;          
+    --branco: #FFFFFF;
+    --laranja-accent: #FF8F00;       
 }
 
-/* Tipografia - Duas fontes distintas */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
@@ -31,14 +28,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--verde-principal);
 }
 
-/* Layout responsivo */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Header */
 header {
     background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
     color: var(--branco);
@@ -96,7 +91,6 @@ header .container {
     background-color: rgba(255,255,255,0.1);
 }
 
-/* Hero Section */
 .hero {
     background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.8)), 
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23E8F5E8" width="1200" height="600"/><circle fill="%23C8E6C9" cx="200" cy="150" r="100"/><circle fill="%23A5D6A7" cx="800" cy="300" r="80"/><circle fill="%2381C784" cx="1000" cy="100" r="60"/></svg>');
@@ -119,7 +113,6 @@ header .container {
     opacity: 0.9;
 }
 
-/* Botões */
 .btn-primary, .btn-secondary {
     display: inline-block;
     padding: 12px 30px;
@@ -165,7 +158,6 @@ header .container {
     color: var(--branco);
 }
 
-/* Seções */
 section {
     padding: 4rem 0;
 }
@@ -176,7 +168,6 @@ section h2 {
     font-size: 2.5rem;
 }
 
-/* Serviços */
 .services {
     background-color: var(--cinza-claro);
 }
@@ -211,7 +202,6 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-/* Galeria */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -240,7 +230,6 @@ section h2 {
     font-weight: 600;
 }
 
-/* Sobre */
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -283,7 +272,6 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-/* ODS 13 */
 .ods13 {
     background: linear-gradient(135deg, var(--verde-principal), var(--azul-sustentavel));
     color: var(--branco);
@@ -326,7 +314,6 @@ section h2 {
     color: var(--verde-principal);
 }
 
-/* Agendamento */
 .appointment {
     background-color: var(--verde-suave);
     text-align: center;
@@ -343,7 +330,6 @@ section h2 {
     opacity: 0.9;
 }
 
-/* Cadastro */
 .cadastro-section {
     padding: 4rem 0;
     background: linear-gradient(135deg, var(--cinza-claro), var(--branco));
@@ -451,7 +437,6 @@ section h2 {
     color: var(--cinza-escuro);
 }
 
-/* Footer */
 footer {
     background: var(--cinza-escuro);
     color: var(--branco);
@@ -498,7 +483,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;

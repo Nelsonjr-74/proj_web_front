@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Super Motors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--branco);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .admin-container h2 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--verde-principal);
+        }
+
+        .admin-container > p {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--cinza-escuro);
+        }
+
+        .admin-form {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--cinza-claro);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+        }
+
+        .btn-clear {
+            background: var(--cinza-escuro);
+            color: var(--branco);
+        }
+
+        .btn-clear:hover {
+            background: #333;
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--verde-claro);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .users-list {
+            margin-top: 2rem;
+        }
+
+        .users-list h3 {
+            color: var(--verde-principal);
+            margin-bottom: 1rem;
+        }
+
+        .list-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .btn-delete-all {
+            background: #D32F2F;
+            color: var(--branco);
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-delete-all:hover {
+            background: #B71C1C;
+        }
+
+        .user-item {
+            background: var(--cinza-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .user-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-info .user-name {
+            font-weight: 600;
+            color: var(--verde-principal);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .user-info .user-email {
+            color: var(--cinza-escuro);
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info .user-date {
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-delete {
+            background: #D32F2F;
+            color: var(--branco);
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: #B71C1C;
+        }
+
+        .empty-list {
+            text-align: center;
+            padding: 3rem;
+            color: var(--cinza-escuro);
+        }
+
+        .empty-list p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .count-info {
+            color: var(--cinza-escuro);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/super-motors-logo.png" alt="Super Motors" id="logo">
+                <h1> Super Motors</h1>
+                <p>Oficina Sustentável</p>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#servicos">Serviços</a></li>
+                    <li><a href="../index.html#sobre">Sobre Nós</a></li>
+                    <li><a href="../index.html#agendamento">Agendamento</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>      
+        <section class="cadastro-section">
+            <div class="container">
+                <div class="admin-container">
+                    <h2>Administração de Usuários</h2>
+                    <p>Gerencie o cadastro de usuários do sistema</p>
+                    
+                    <form class="admin-form" id="userForm">
+                        <div class="form-group">
+                            <label for="nome">Nome *</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Cadastrar</button>
+                            <button type="button" class="btn-clear" id="btnClear">Limpar Campos</button>
+                        </div>
+                    </form>
+
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Pesquisar por Nome ou E-mail...">
+                    </div>
+
+                    <div class="users-list">
+                        <div class="list-actions">
+                            <h3>Usuários Cadastrados</h3>
+                            <button type="button" class="btn-delete-all" id="btnDeleteAll">Excluir Todos</button>
+                        </div>
+                        <div class="count-info" id="countInfo"></div>
+                        <div id="usersList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Super Motors</h3>
+                    <p>Oficina Sustentável</p>
+                    <p>Comprometidos com o meio ambiente</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@supermotors.com.br</p>
+                    <p>📍 Av. Alberto Carazzai, 1640 - Centro <br> Cornélio Procópio - PR</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Super Motors. Todos os direitos reservados. | Desenvolvido com foco na sustentabilidade</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chave para armazenamento no Local Storage
+        const STORAGE_KEY = 'super_motors_users';
+
+        // Função para obter usuários do Local Storage
+        function getUsers() {
+            const usersJson = localStorage.getItem(STORAGE_KEY);
+            return usersJson ? JSON.parse(usersJson) : [];
+        }
+
+        // Função para salvar usuários no Local Storage
+        function saveUsers(users) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+        }
+
+        // Função para formatar data
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Função para renderizar a lista de usuários
+        function renderUsersList(users = null) {
+            const usersListElement = document.getElementById('usersList');
+            const countInfoElement = document.getElementById('countInfo');
+            let usersToDisplay = users !== null ? users : getUsers();
+            const allUsers = getUsers();
+
+            if (usersToDisplay.length === 0) {
+                usersListElement.innerHTML = `
+                    <div class="empty-list">
+                        <p>Nenhum usuário cadastrado</p>
+                        <p style="font-size: 0.9rem; opacity: 0.7;">Cadastre um usuário usando o formulário acima</p>
+                    </div>
+                `;
+                countInfoElement.textContent = '';
+            } else {
+                usersListElement.innerHTML = usersToDisplay.map((user, index) => {
+                    const originalIndex = allUsers.findIndex(u => u.id === user.id);
+                    return `
+                        <div class="user-item">
+                            <div class="user-info">
+                                <div class="user-name">${escapeHtml(user.nome)}</div>
+                                <div class="user-email">${escapeHtml(user.email)}</div>
+                                <div class="user-date">Cadastrado em: ${formatDate(user.dataCadastro)}</div>
+                            </div>
+                            <div class="user-actions">
+                                <button type="button" class="btn-delete" onclick="deleteUser(${originalIndex})">Excluir</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                const totalCount = allUsers.length;
+                const filteredCount = usersToDisplay.length;
+                if (filteredCount < totalCount) {
+                    countInfoElement.textContent = `Mostrando ${filteredCount} de ${totalCount} usuário(s)`;
+                } else {
+                    countInfoElement.textContent = `Total: ${totalCount} usuário(s)`;
+                }
+            }
+        }
+
+        // Função para escapar HTML (prevenir XSS)
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Função para adicionar usuário
+        function addUser(nome, email) {
+            const users = getUsers();
+            const newUser = {
+                id: Date.now(),
+                nome: nome.trim(),
+                email: email.trim(),
+                dataCadastro: new Date().toISOString()
+            };
+            users.push(newUser);
+            saveUsers(users);
+            renderUsersList();
+        }
+
+        // Função para excluir usuário
+        function deleteUser(index) {
+            if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                const users = getUsers();
+                users.splice(index, 1);
+                saveUsers(users);
+                renderUsersList();
+            }
+        }
+
+        // Função para excluir todos os usuários
+        function deleteAllUsers() {
+            const users = getUsers();
+            if (users.length === 0) {
+                alert('Não há usuários para excluir.');
+                return;
+            }
+
+            if (confirm(`Tem certeza que deseja excluir todos os ${users.length} usuário(s)? Esta ação não pode ser desfeita.`)) {
+                saveUsers([]);
+                renderUsersList();
+            }
+        }
+
+        // Função para pesquisar usuários
+        function searchUsers(searchTerm) {
+            const users = getUsers();
+            if (!searchTerm.trim()) {
+                renderUsersList();
+                return;
+            }
+
+            const term = searchTerm.toLowerCase().trim();
+            const filteredUsers = users.filter(user => {
+                return user.nome.toLowerCase().includes(term) || 
+                       user.email.toLowerCase().includes(term);
+            });
+            renderUsersList(filteredUsers);
+        }
+
+        // Função para limpar campos do formulário
+        function clearForm() {
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('nome').focus();
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar lista ao iniciar
+            renderUsersList();
+
+            // Submissão do formulário
+            document.getElementById('userForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nome = document.getElementById('nome').value.trim();
+                const email = document.getElementById('email').value.trim();
+
+                if (!nome || !email) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+
+                // Validação básica de email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Por favor, insira um e-mail válido.');
+                    return;
+                }
+
+                addUser(nome, email);
+                clearForm();
+            });
+
+            // Botão limpar campos
+            document.getElementById('btnClear').addEventListener('click', clearForm);
+
+            // Botão excluir todos
+            document.getElementById('btnDeleteAll').addEventListener('click', deleteAllUsers);
+
+            // Campo de pesquisa
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchUsers(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>
+
